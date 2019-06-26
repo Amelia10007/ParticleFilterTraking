@@ -22,6 +22,10 @@ namespace ParticleFilterTraking.Backend
         public Bitmap Draw()
         {
             var bitmap = new Bitmap(this.field.Size.Width, this.field.Size.Height);
+            using(var graphics = Graphics.FromImage(bitmap))
+            {
+                graphics.Clear(Color.Black);
+            }
             this.field.ObservationTarget.Draw(bitmap);
             this.estimator.DrawEstimation(bitmap);
             return bitmap;

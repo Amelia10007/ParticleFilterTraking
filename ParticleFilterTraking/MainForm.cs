@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParticleFilterTraking.Backend;
@@ -15,7 +14,6 @@ namespace ParticleFilterTraking
         public MainForm()
         {
             InitializeComponent();
-            this.pictureBox.BackColor = Color.Black;
             //
             this.InitializeField();
             //
@@ -38,12 +36,18 @@ namespace ParticleFilterTraking
         }
         private void InitializeField()
         {
-            var fieldSize = new Backend.Size(300, 300);
+            var width = (int)this.fieldWidthBox.Value;
+            var height = (int)this.fieldHeightBox.Value;
+            var objectSize = (int)this.objectSizeBox.Value;
+            var particleCount = (int)this.particleCountBox.Value;
+            var wrongRate = this.observationWrongProbabilityBar.Value / 100.0;
+            var fieldSize = new Backend.Size(width, height);
             var objectPosition = new Position(fieldSize.Width / 2, fieldSize.Height / 2);
-            var trakingObject = new Circle(objectPosition, 5.0, fieldSize);
+            var trakingObject = new Circle(objectPosition, objectSize, fieldSize);
             var field = new Field(fieldSize, trakingObject);
-            var estimator = new ParticleFilterObserver(field, 10000);
-            this.backendSystem = new BackendSystem(field, estimator, 0.2);
+            var estimator = new ParticleFilterObserver(field, particleCount);
+            this.backendSystem = new BackendSystem(field, estimator, wrongRate);
+            this.timeStep = 0;
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -60,7 +64,7 @@ namespace ParticleFilterTraking
             this.timer.Stop();
         }
 
-        private void resetButton_Click(object sender, EventArgs e)
+        private void applyButton_Click(object sender, EventArgs e)
         {
             this.InitializeField();
         }
