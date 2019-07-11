@@ -85,5 +85,6 @@ namespace ParticleFilterTraking.Backend
                 canvas.SetPixel(position.X, position.Y, Color.FromArgb(255, 0, 0));
             }
         }
+        public override string ToString() => $"particle count: {this.particles.Count}";
     }
 }

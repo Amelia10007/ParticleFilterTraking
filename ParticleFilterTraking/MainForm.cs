@@ -22,11 +22,11 @@ namespace ParticleFilterTraking
               {
                   if (this.isUpdating)
                   {
-                      this.notificationLabel.Text = $"step {this.timeStep} (Busy)";
+                      this.notificationLabel.Text = $"step {this.timeStep} (Busy) {this.backendSystem.ToString()}";
                       return;
                   }
                   this.isUpdating = true;
-                  this.notificationLabel.Text = $"step {this.timeStep}";
+                  this.notificationLabel.Text = $"step {this.timeStep}: {this.backendSystem.ToString()}";
                   await Task.Run(() => this.backendSystem.Update());
                   var bitmap = await Task.Run(() => this.backendSystem.Draw());
                   this.pictureBox.Image = bitmap;

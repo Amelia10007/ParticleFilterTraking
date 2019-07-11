@@ -30,5 +30,6 @@ namespace ParticleFilterTraking.Backend
             this.estimator.DrawEstimation(bitmap);
             return bitmap;
         }
+        public override string ToString() => $"Estimator: {this.estimator.ToString()}";
     }
 }
