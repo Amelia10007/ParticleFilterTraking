@@ -80,8 +80,7 @@ namespace ParticleFilterTraking.Backend
                 var position = group.Key;
                 var count = group.Count();
                 var ratio = (double)count / this.particles.Count;
-                var color = ColorCircle.At(ratio);
-                canvas.SetPixel(position.X, position.Y, color);
+                canvas.SetPixel(position.X, position.Y, Color.FromArgb(255, 0, 0));
             }
         }
     }

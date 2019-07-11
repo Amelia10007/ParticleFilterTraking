@@ -43,14 +43,14 @@ namespace ParticleFilterTraking.Backend
         {
             using (var graphics = Graphics.FromImage(canvas))
             {
-                using (var pen = new Pen(Color.White))
+                using (var brush = new SolidBrush(Color.LightGray))
                 {
                     var left = (int)(this.position.X - this.radius);
                     var top = (int)(this.position.Y - this.radius);
                     var width = (int)(this.radius * 2);
                     var height = (int)(this.radius * 2);
                     var rectangle = new Rectangle(left, top, width, height);
-                    graphics.DrawEllipse(pen, rectangle);
+                    graphics.FillEllipse(brush, rectangle);
                 }
             }
         }
