@@ -19,6 +19,7 @@ namespace ParticleFilterTraking.Backend
         }
         private readonly Size size;
         private IReadOnlyCollection<Particle> particles;
+        public Func<int, int> NextStepParticleCount = (current) => current;
         public ParticleFilterObserver(Field field, int particleCount)
         {
             this.size = field.Size;
@@ -59,8 +60,9 @@ namespace ParticleFilterTraking.Backend
             }
             //計算された存在確率分布をもとに，粒子を再びサンプリングする(リサンプリング)．
             var random = new Random();
-            var newParticles = new List<Particle>(this.particles.Count);
-            foreach (var _ in Enumerable.Range(0, this.particles.Count).AsParallel())
+            var newPaticleCount = this.NextStepParticleCount(this.particles.Count);
+            var newParticles = new List<Particle>(newPaticleCount);
+            foreach (var _ in Enumerable.Range(0, newPaticleCount).AsParallel())
             {
                 var r = random.NextDouble() * probabilitySum;
                 var matchedCell = probabilitySums.First(cell => cell.ProbabilitySum > r);

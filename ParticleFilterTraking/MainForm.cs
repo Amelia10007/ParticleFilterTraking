@@ -46,6 +46,9 @@ namespace ParticleFilterTraking
             var trakingObject = new Circle(objectPosition, objectSize, fieldSize);
             var field = new Field(fieldSize, trakingObject);
             var estimator = new ParticleFilterObserver(field, particleCount);
+            var minimumParticleCount = (int)this.minimumParticleCountBox.Value;
+            var particleDecreaseCount = this.particleDecreaseRateTrackBar.Value / 100.0;
+            estimator.NextStepParticleCount = (current) => Math.Max((int)(current * particleDecreaseCount), minimumParticleCount);
             this.backendSystem = new BackendSystem(field, estimator, wrongRate);
             this.timeStep = 0;
         }

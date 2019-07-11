@@ -43,12 +43,18 @@
             this.objectSizeBox = new System.Windows.Forms.NumericUpDown();
             this.particleCountBox = new System.Windows.Forms.NumericUpDown();
             this.observationWrongProbabilityBar = new System.Windows.Forms.TrackBar();
+            this.minimumParticleCountBox = new System.Windows.Forms.NumericUpDown();
+            this.minimumPaticleCountLabel = new System.Windows.Forms.Label();
+            this.particleDecreaseRateTrackBar = new System.Windows.Forms.TrackBar();
+            this.particleDecreaseRateLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldWidthBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldHeightBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectSizeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.particleCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.observationWrongProbabilityBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimumParticleCountBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.particleDecreaseRateTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -93,7 +99,7 @@
             // 
             // applyButton
             // 
-            this.applyButton.Location = new System.Drawing.Point(839, 348);
+            this.applyButton.Location = new System.Drawing.Point(839, 597);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(145, 23);
             this.applyButton.TabIndex = 4;
@@ -245,7 +251,7 @@
             this.particleCountBox.Size = new System.Drawing.Size(120, 19);
             this.particleCountBox.TabIndex = 17;
             this.particleCountBox.Value = new decimal(new int[] {
-            5000,
+            10000,
             0,
             0,
             0});
@@ -260,11 +266,71 @@
             this.observationWrongProbabilityBar.TickFrequency = 10;
             this.observationWrongProbabilityBar.Value = 20;
             // 
+            // minimumParticleCountBox
+            // 
+            this.minimumParticleCountBox.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.minimumParticleCountBox.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.minimumParticleCountBox.Location = new System.Drawing.Point(838, 360);
+            this.minimumParticleCountBox.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.minimumParticleCountBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.minimumParticleCountBox.Name = "minimumParticleCountBox";
+            this.minimumParticleCountBox.Size = new System.Drawing.Size(120, 19);
+            this.minimumParticleCountBox.TabIndex = 21;
+            this.minimumParticleCountBox.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // minimumPaticleCountLabel
+            // 
+            this.minimumPaticleCountLabel.AutoSize = true;
+            this.minimumPaticleCountLabel.Location = new System.Drawing.Point(837, 345);
+            this.minimumPaticleCountLabel.Name = "minimumPaticleCountLabel";
+            this.minimumPaticleCountLabel.Size = new System.Drawing.Size(125, 12);
+            this.minimumPaticleCountLabel.TabIndex = 20;
+            this.minimumPaticleCountLabel.Text = "Minimum Particle count";
+            // 
+            // particleDecreaseRateTrackBar
+            // 
+            this.particleDecreaseRateTrackBar.Location = new System.Drawing.Point(838, 410);
+            this.particleDecreaseRateTrackBar.Maximum = 100;
+            this.particleDecreaseRateTrackBar.Name = "particleDecreaseRateTrackBar";
+            this.particleDecreaseRateTrackBar.Size = new System.Drawing.Size(145, 45);
+            this.particleDecreaseRateTrackBar.TabIndex = 23;
+            this.particleDecreaseRateTrackBar.TickFrequency = 10;
+            this.particleDecreaseRateTrackBar.Value = 95;
+            // 
+            // particleDecreaseRateLabel
+            // 
+            this.particleDecreaseRateLabel.AutoSize = true;
+            this.particleDecreaseRateLabel.Location = new System.Drawing.Point(836, 395);
+            this.particleDecreaseRateLabel.Name = "particleDecreaseRateLabel";
+            this.particleDecreaseRateLabel.Size = new System.Drawing.Size(136, 12);
+            this.particleDecreaseRateLabel.TabIndex = 22;
+            this.particleDecreaseRateLabel.Text = "Particle decrease rate (%)";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 632);
+            this.Controls.Add(this.particleDecreaseRateTrackBar);
+            this.Controls.Add(this.particleDecreaseRateLabel);
+            this.Controls.Add(this.minimumParticleCountBox);
+            this.Controls.Add(this.minimumPaticleCountLabel);
             this.Controls.Add(this.observationWrongProbabilityBar);
             this.Controls.Add(this.particleCountBox);
             this.Controls.Add(this.objectSizeBox);
@@ -288,6 +354,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.objectSizeBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.particleCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.observationWrongProbabilityBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimumParticleCountBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.particleDecreaseRateTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,6 +378,10 @@
         private System.Windows.Forms.NumericUpDown objectSizeBox;
         private System.Windows.Forms.NumericUpDown particleCountBox;
         private System.Windows.Forms.TrackBar observationWrongProbabilityBar;
+        private System.Windows.Forms.NumericUpDown minimumParticleCountBox;
+        private System.Windows.Forms.Label minimumPaticleCountLabel;
+        private System.Windows.Forms.TrackBar particleDecreaseRateTrackBar;
+        private System.Windows.Forms.Label particleDecreaseRateLabel;
     }
 }
 
