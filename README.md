@@ -1,5 +1,5 @@
 # ParticleFilterTraking
-An example of object traking by particle filter.
+An example of object tracking by particle filter.
 
 ---
 ## Requirements
